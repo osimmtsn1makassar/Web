@@ -887,14 +887,8 @@
                     <div class="lg:flex">
                         <div class="lg:w-1/2 relative">
                             <div class="slideshow w-full relative">
-                                <img src="Pelantikan Foto/Foto Pelantikan.png" class="slide w-full object-cover opacity-100 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-1.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-2.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-3.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-4.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-5.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-6.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
-                                <img src="Pelantikan Foto/Foto Pelantikan-8.png" class="slide w-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
+                                 <img id="slideshow-upgr" src="UPGR/1.png" 
+                            class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
                             </div>
                         </div>
                         <div class="lg:w-1/2 p-8">
@@ -1640,7 +1634,7 @@
         });
 
   const folder = "LKTIJ/";
-  const totalImages = 81;
+  const totalImages = 10;
   const imgElement = document.getElementById("slideshow-img");
   let lastIndex = 1; // to avoid repeating the same image twice
 
@@ -1672,7 +1666,7 @@
   
   // --- LDK Slideshow ---
   const folderLDK = "LDK/";
-  const totalLDK = 136; // adjust number of images in LDK folder
+  const totalLDK = 10; // adjust number of images in LDK folder
   const imgLDK = document.getElementById("slideshow-ldk");
   let lastLDK = 1;
 
@@ -1685,6 +1679,24 @@
       imgLDK.src = `${folderLDK}${lastLDK}.jpg`;
       imgLDK.classList.remove("opacity-0");
       imgLDK.classList.add("opacity-100");
+    }, 1000);
+  }, 4000);
+
+    // --- UpGr Slideshow ---
+  const folderUPGR = "UPGR/";
+  const totalUPGR = 8; 
+  const imgUPGR = document.getElementById("slideshow-upgr");
+  let lastUPGR = 1;
+
+  setInterval(() => {
+    imgUPGR.classList.remove("opacity-100");
+    imgUPGR.classList.add("opacity-0");
+
+    setTimeout(() => {
+      lastUPGR = getRandomIndex(totalUPGR, lastUPGR);
+      imgUPGR.src = `${folderUPGR}${lastUPGR}.png`;
+      imgUPGR.classList.remove("opacity-0");
+      imgUPGR.classList.add("opacity-100");
     }, 1000);
   }, 4000);
     </script>
