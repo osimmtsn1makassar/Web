@@ -29,6 +29,27 @@
                 transform: translateY(0);
             }
         }
+/* --- Responsive Hero Slideshow (fill & zoom for mobile) --- */
+@media (max-width: 768px) {
+  #hero-slides {
+    height: 260px; /* Adjust hero height on mobile */
+  }
+
+  #hero-slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills the container, maintains aspect ratio */
+    object-position: center;
+    transform: scale(1.1); /* start slightly zoomed in */
+    transition: transform 1.5s ease;
+  }
+
+  /* Zoom-down effect */
+  #hero-slides img.active {
+    transform: scale(1);
+  }
+}
+
 
         .hero-section {
             opacity: 0;
@@ -203,7 +224,7 @@
                 <div onclick="window.location.href='index.html'">
                     <!-- Logo -->
                     <div class="flex items-center space-x-3 cursor-pointer">
-                        <img src="Logo OSIM.webp" class="w-12 h-12 rounded-full flex items-center justify-center">
+                        <img src="Logo OSIM.png" class="w-12 h-12 rounded-full flex items-center justify-center">
                         </img>
                         <div>
                             <h1 class="text-xl font-bold text-gray-900">OSIM</h1>
