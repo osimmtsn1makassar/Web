@@ -20,6 +20,21 @@
 		/>
 
     <style>
+        @keyframes slideFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+        .hero-section {
+        opacity: 0;
+        animation: slideFadeIn 1.2s ease-out forwards;
+        }
         /* Custom styles */
         .line-clamp-2 {
             display: -webkit-box;
@@ -119,7 +134,7 @@
                 grid-template-columns: 1fr 540px;
             }
         }
-        			.islamic-pattern {
+        		.islamic-pattern {
 				background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 			}
 			.gradient-text {
@@ -254,7 +269,7 @@
 
     <!-- Hero Section (Updated button) -->
     <main class="max-w-7xl mx-auto px-6 py-16" id="beranda">
-        <section class="grid gap-8 hero-grid items-center">
+        <section class="grid gap-8 hero-grid items-center hero-section">
             <div class="space-y-8">
                 <div class="flex items-center gap-3 text-sm text-emerald-600 font-semibold" data-aos="fade-right"
                     data-aos-delay="100">
@@ -266,7 +281,7 @@
                 <h1 class="text-6xl leading-tight font-extrabold text-slate-900" data-aos="fade-right"
                     data-aos-delay="200">
                     <span class="text-4xl text-emerald-500 font-extrabold">OSIM</span><br>
-                    MTSN 1 Kota<br>Makassar
+                    MTsN 1 Kota<br>Makassar
                 </h1>
                 <p class="max-w-xl text-slate-600 text-lg" data-aos="fade-right" data-aos-delay="300">
                     Organisasi Siswa Intra Sekolah yang berkomitmen membangun karakter islami, mengembangkan potensi
