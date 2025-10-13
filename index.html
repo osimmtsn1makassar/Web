@@ -1409,25 +1409,29 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Parallax effect
+        // Parallax effect (disabled on mobile for better performance)
         let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    const parallaxElements = document.querySelectorAll('.parallax-element');
+        const isMobile = window.innerWidth < 768;
+        
+        if (!isMobile) {
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrolled = window.pageYOffset;
+                        const parallaxElements = document.querySelectorAll('.parallax-element');
 
-                    parallaxElements.forEach(element => {
-                        const speed = element.dataset.speed || 0.5;
-                        const yPos = -(scrolled * speed);
-                        element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                        parallaxElements.forEach(element => {
+                            const speed = element.dataset.speed || 0.5;
+                            const yPos = -(scrolled * speed);
+                            element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                        });
+
+                        ticking = false;
                     });
-
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
+                    ticking = true;
+                }
+            });
+        }
 
         // Intersection Observer for scroll animations
         const observerOptions = {
