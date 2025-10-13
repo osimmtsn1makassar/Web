@@ -7,86 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSIM MTsN 1 Makassar - Organisasi Siswa Intra Madrasah</title>
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://unpkg.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
 
     <style>
-        /* Optimized CSS - removed duplicates and added performance enhancements */
-        
-        /* Parallax Base */
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            will-change: transform;
-        }
-
-        .parallax-element {
-            will-change: transform;
-            transition: transform 0.1s ease-out;
-        }
-
-        /* Animations */
         @keyframes slideFadeIn {
             0% {
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+/* --- Responsive Hero Slideshow (fill & zoom for mobile) --- */
+@media (max-width: 768px) {
+  #hero-slides {
+    height: 260px; /* Adjust hero height on mobile */
+  }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+  #hero-slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills the container, maintains aspect ratio */
+    object-position: center;
+    transform: scale(1.1); /* start slightly zoomed in */
+    transition: transform 1.5s ease;
+  }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
+  /* Zoom-down effect */
+  #hero-slides img.active {
+    transform: scale(1);
+  }
+}
 
-        /* Responsive Hero Slideshow */
-        @media (max-width: 768px) {
-            #hero-slides {
-                height: 260px;
-            }
-            #hero-slides img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-                transform: scale(1.1);
-                transition: transform 1.5s ease;
-            }
-            #hero-slides img.active {
-                transform: scale(1);
-            }
-        }
 
         .hero-section {
             opacity: 0;
@@ -123,13 +86,22 @@
             display: block;
         }
 
-        /* Hover animations */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* Hover animations */
         .hover-lift:hover {
             transform: translateY(-4px);
+            transition: transform 0.3s ease;
         }
 
         /* Mobile menu */
@@ -144,8 +116,6 @@
         /* Gallery filter */
         .gallery-item {
             display: block;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
         }
 
         .gallery-item.hidden {
@@ -178,7 +148,6 @@
             place-items: center;
             border: 1px solid rgba(0, 0, 0, 0.06);
             background: linear-gradient(180deg, #fff, #f7fefd);
-            animation: float 2s ease-in-out infinite;
         }
 
         @media (min-width: 1024px) {
@@ -215,43 +184,32 @@
             transform: translateY(0);
         }
 
-        /* Lazy loading images */
-        img[loading="lazy"] {
+        /* --- Animasi Tambahan --- */
+        @keyframes slideFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slideFadeIn {
+            animation: slideFadeIn 1.2s ease-out forwards;
+        }
+
+        .animated-item {
             opacity: 0;
-            transition: opacity 0.3s;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
-        img[loading="lazy"].loaded {
+        .animated-item.visible {
             opacity: 1;
-        }
-
-        /* Performance optimization */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Gallery show more button */
-        .gallery-item.initially-hidden {
-            display: none;
-        }
-
-        .gallery-item.show {
-            display: block;
-        }
-
-        /* Parallax sections */
-        .parallax-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .parallax-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -259,13 +217,15 @@
 <body class="bg-white text-gray-900">
 
     <!-- Header -->
+    <!-- Header -->
     <header class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div onclick="window.location.href='index.html'">
                     <!-- Logo -->
                     <div class="flex items-center space-x-3 cursor-pointer">
-                        <img src="Logo OSIM.png" class="w-12 h-12 rounded-full" alt="Logo OSIM" loading="eager">
+                        <img src="Logo OSIM.png" class="w-12 h-12 rounded-full flex items-center justify-center">
+                        </img>
                         <div>
                             <h1 class="text-xl font-bold text-gray-900">OSIM</h1>
                             <p class="text-sm text-gray-600">MTsN 1 Makassar</p>
@@ -313,7 +273,7 @@
                 </nav>
 
                 <!-- Mobile menu button -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2" aria-label="Toggle menu">
+                <button id="mobile-menu-btn" class="lg:hidden p-2">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -361,57 +321,60 @@
         </div>
     </header>
 
-    <!-- Hero Section with Parallax -->
-    <main class="max-w-7xl mx-auto px-6 py-16 parallax-section" id="beranda">
+    <!-- Hero Section (Updated button) -->
+    <main class="max-w-7xl mx-auto px-6 py-16" id="beranda">
         <section class="grid gap-8 hero-grid items-center hero-section text-center lg:text-left">
-            <div class="space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left parallax-element"
-                data-speed="0.5">
-                <div class="flex items-center gap-3 text-sm text-emerald-600 font-semibold">
+            <div class="space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="flex items-center gap-3 text-sm text-emerald-600 font-semibold" data-aos="fade-right"
+                    data-aos-delay="100">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                         <circle cx="12" cy="12" r="10" stroke="#10b981" stroke-width="1.2" />
                     </svg>
                     Periode Kepengurusan 2025/2026
                 </div>
-                <h1 class="text-6xl leading-tight font-extrabold text-slate-900">
+                <h1 class="text-6xl leading-tight font-extrabold text-slate-900" data-aos="fade-right"
+                    data-aos-delay="200">
                     <span class="text-4xl text-emerald-500 font-extrabold">OSIM</span><br>
                     MTsN 1 Kota<br>Makassar
                 </h1>
-                <p class="max-w-xl text-slate-600 text-lg text-justify">
+                <p class="max-w-xl text-slate-600 text-lg text-justify" data-aos="fade-right" data-aos-delay="300">
                     Organisasi Siswa Intra Sekolah yang berkomitmen membangun karakter islami, mengembangkan potensi
                     siswa, dan menciptakan lingkungan madrasah yang harmonis.
                 </p>
-                <div class="flex flex-wrap justify-evenly lg:justify-start gap-4 lg:gap-4 w-full lg:w-auto">
-                    <a href="#tentang"
-                        class="px-6 py-3 rounded-md bg-gradient-to-r from-emerald-400 to-blue-500 text-white font-semibold shadow-md hover:translate-y-[-1px] transition">
-                        Pelajari Lebih Lanjut
-                    </a>
-                    <button onclick="document.querySelector('#berita').scrollIntoView({ behavior: 'smooth' })"
-                        class="px-6 py-3 rounded-md border border-slate-300 bg-white font-medium hover:bg-gray-50 transition">
-                        Lihat Kegiatan
-                    </button>
-                </div>
+<div class="flex flex-wrap justify-evenly lg:justify-start gap-4 lg:gap-4 w-full lg:w-auto">
+  <a href="#tentang"
+    class="px-6 py-3 rounded-md bg-gradient-to-r from-emerald-400 to-blue-500 text-white font-semibold shadow-md hover:translate-y-[-1px] transition">
+    Pelajari Lebih Lanjut
+  </a>
+  <button onclick="document.querySelector('#berita').scrollIntoView({ behavior: 'smooth' })"
+    class="px-6 py-3 rounded-md border border-slate-300 bg-white font-medium">
+    Lihat Kegiatan
+  </button>
+</div>
+
             </div>
-            <div class="hero-img-wrap relative group parallax-element" data-speed="0.3">
+            <div class="hero-img-wrap relative group">
                 <div id="hero-slides" class="relative w-full h-[420px] overflow-hidden">
                     <!-- Images will be inserted here by JS -->
                 </div>
 
+
                 <!-- Arrows -->
                 <button
-                    class="absolute top-1/2 left-3 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 hidden group-hover:block transition"
-                    onclick="prevSlide()" aria-label="Previous slide">&#10094;</button>
+                    class="absolute top-1/2 left-3 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 hidden group-hover:block"
+                    onclick="prevSlide()">&#10094;</button>
                 <button
-                    class="absolute top-1/2 right-3 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 hidden group-hover:block transition"
-                    onclick="nextSlide()" aria-label="Next slide">&#10095;</button>
+                    class="absolute top-1/2 right-3 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 hidden group-hover:block"
+                    onclick="nextSlide()">&#10095;</button>
             </div>
         </section>
     </main>
 
-    <!-- About Section with Parallax -->
-    <section id="tentang" class="py-20 bg-white parallax-section">
+    <!-- About Section -->
+    <section id="tentang" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animated-item">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Tentang OSIM
                 </h2>
@@ -424,8 +387,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Visi -->
                 <div
-                    class="border-2 border-emerald-100 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg p-8 animated-item parallax-element"
-                    data-speed="0.2">
+                    class="border-2 border-emerald-100 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg p-8">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
                             <i data-lucide="eye" class="w-6 h-6 text-emerald-600"></i>
@@ -439,8 +401,7 @@
 
                 <!-- Misi -->
                 <div
-                    class="border-2 border-emerald-100 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg p-8 animated-item parallax-element"
-                    data-speed="0.4">
+                    class="border-2 border-emerald-100 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg p-8">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
                             <i data-lucide="target" class="w-6 h-6 text-emerald-600"></i>
@@ -483,7 +444,7 @@
             </div>
 
             <!-- Additional Info -->
-            <div class="mt-16 bg-emerald-50 rounded-2xl p-8 lg:p-12 animated-item">
+            <div class="mt-16 bg-emerald-50 rounded-2xl p-8 lg:p-12">
                 <div class="text-center">
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">
                         Periode Kepengurusan 2025/2026
@@ -492,14 +453,14 @@
                         Dengan semangat baru dan dedikasi tinggi, OSIM MTsN 1 Makassar siap melaksanakan
                         berbagai program kerja yang inovatif dan bermanfaat bagi seluruh warga madrasah.
                     </p>
-                    <div class="flex flex-wrap justify-center items-center gap-4 text-sm text-gray-600">
+                    <div class="flex justify-center items-center space-x-8 text-sm text-gray-600">
                         <div class="flex items-center">
                             <div class="w-2 h-2 bg-emerald-600 rounded-full mr-2"></div>
                             <span>Berkarakter Islami</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-2 h-2 bg-emerald-600 rounded-full mr-2"></div>
-                            <span>Mengembangkan Wawasan dan Keterampilan</span>
+                            <span>Mengembangkan Wawasan dan Keterampilan.</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-2 h-2 bg-emerald-600 rounded-full mr-2"></div>
@@ -515,7 +476,7 @@
     <section id="program" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animated-item">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Program Kerja OSIM
                 </h2>
@@ -528,7 +489,7 @@
             <!-- Programs Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Sekbid I -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(1)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🕌</div>
@@ -543,7 +504,7 @@
                 </div>
 
                 <!-- Sekbid II -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(2)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🎯</div>
@@ -558,7 +519,7 @@
                 </div>
 
                 <!-- Sekbid III -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(3)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🇮🇩</div>
@@ -574,7 +535,7 @@
                 </div>
 
                 <!-- Sekbid IV -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(4)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🏆</div>
@@ -590,7 +551,7 @@
                 </div>
 
                 <!-- Sekbid V -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(5)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🌱</div>
@@ -605,7 +566,7 @@
                 </div>
 
                 <!-- Sekbid VI -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(6)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">💼</div>
@@ -620,7 +581,7 @@
                 </div>
 
                 <!-- Sekbid VII -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(7)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🗣️</div>
@@ -635,7 +596,7 @@
                 </div>
 
                 <!-- Sekbid VIII -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(8)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🏥</div>
@@ -649,7 +610,7 @@
                 </div>
 
                 <!-- Sekbid IX -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(9)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">💻</div>
@@ -664,7 +625,7 @@
                 </div>
 
                 <!-- Sekbid X -->
-                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer animated-item"
+                <div class="program-card bg-white hover:shadow-lg hover-lift transition-all duration-300 rounded-lg border-l-4 border-l-emerald-500 cursor-pointer"
                     onclick="showProgramDetail(10)">
                     <div class="p-6">
                         <div class="text-3xl mb-2">🎨</div>
@@ -681,31 +642,11 @@
         </div>
     </section>
 
-    <!-- Program Detail Modal -->
-    <div id="program-modal"
-        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center">
-                <div>
-                    <h3 id="modal-title" class="text-2xl font-bold text-gray-900"></h3>
-                    <p id="modal-subtitle" class="text-sm text-emerald-600 mt-1"></p>
-                </div>
-                <button onclick="closeModal()"
-                    class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-            <div id="modal-content" class="p-6">
-                <!-- Content will be dynamically inserted here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Members Section (keeping original code for brevity, add animated-item class to cards) -->
+    <!-- Members Section -->
     <section id="anggota" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animated-item">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Struktur Kepengurusan OSIM
                 </h2>
@@ -736,10 +677,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <!-- Ketua -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/KETUA.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Ketua OSIM" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div class="w-20 h-20  mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/KETUA.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Muhammad Zidan Almisbah</h3>
                         <p class="text-emerald-600 font-medium mb-3">Ketua</p>
@@ -749,10 +689,9 @@
 
                     <!-- Wakil Ketua 1 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WAKETUA1.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Ketua 1" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div class="w-20 h-20  mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WAKETUA1.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Gadiza Kirana Ghaisani</h3>
                         <p class="text-emerald-600 font-medium mb-3">Wakil Ketua 1</p>
@@ -760,15 +699,12 @@
                             9.3</span>
                     </div>
 
-                    <!-- Add remaining members similarly -->
-                    <!-- For brevity, I'll continue with key members -->
-
                     <!-- Wakil Ketua 2 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WAKETUA2.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Ketua 2" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WAKETUA2.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Adiva Dwi Zafirah</h3>
                         <p class="text-emerald-600 font-medium mb-3">Wakil Ketua 2</p>
@@ -778,10 +714,10 @@
 
                     <!-- Wakil Ketua 3 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WAKETUA3.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Ketua 3" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WAKETUA3.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Muh. Zulhadjar Risky Hatta
                         </h3>
@@ -792,10 +728,10 @@
 
                     <!-- Sekretaris Umum -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/SEKUM.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Sekretaris Umum" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/SEKUM.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Muh. Yaqzhan Gajah Mada Al
                             Ghozi</h3>
@@ -806,10 +742,10 @@
 
                     <!-- Wakil Sekretaris 1 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WASEKUM1.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Sekretaris 1" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WASEKUM1.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Fitria Nurbia Cahya</h3>
                         <p class="text-emerald-600 font-medium mb-3">Wakil Sekretaris 1</p>
@@ -819,10 +755,10 @@
 
                     <!-- Wakil Sekretaris 2 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WASEKUM2.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Sekretaris 2" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WASEKUM2.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Amirul Haq Arumy</h3>
                         <p class="text-emerald-600 font-medium mb-3">Wakil Sekretaris 2</p>
@@ -832,10 +768,10 @@
 
                     <!-- Wakil Sekretaris 3 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WASEKUM3.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Sekretaris 3" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WASEKUM3.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Mifthahul Rahman</h3>
                         <p class="text-emerald-600 font-medium mb-3">Wakil Sekretaris 3</p>
@@ -845,10 +781,10 @@
 
                     <!-- Bendahara Umum -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/BENDUM.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Bendahara Umum" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/BENDUM.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Insyirah Faiqah Janan</h3>
                         <p class="text-emerald-600 font-medium mb-3">Bendahara Umum</p>
@@ -858,10 +794,10 @@
 
                     <!-- Wakil Bendahara -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6 animated-item">
-                        <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <img src="Foto Petipul/WABENDUM.webp" class="w-full h-full object-cover rounded-full"
-                                alt="Wakil Bendahara" loading="lazy">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 text-center p-6">
+                        <div
+                            class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <img src="Foto Petipul/WABENDUM.webp" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">Riska Zafirah Hadrawi</h3>
                         <p class="text-emerald-600 font-medium mb-3">Wakil Bendahara</p>
@@ -871,13 +807,12 @@
                 </div>
             </div>
 
-            <!-- Koordinator Sekbid (keeping brief for space) -->
+            <!-- Koordinator Sekbid -->
             <div id="content-koordinator" class="tab-content">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Continue with all Sekbid coordinators similar to original but with animated-item class -->
                     <!-- Sekbid 1 -->
                     <div
-                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300 animated-item">
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
                         <div class="p-6">
                             <div class="flex items-center mb-4">
                                 <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -910,17 +845,317 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Continue with remaining Sekbids (2-10) similarly -->
+
+                    <!-- Sekbid 2 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">2</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 2</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Muh. Akbar Anugrah R</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.5</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Adinda Amira Shafira</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas 9.7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 3 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">3</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 3</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Najwa Nurul Salsabila</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Billingual</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Muhammad Yaqshan Rakha H</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas 9.4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 4 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">4</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 4</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Andi Aisyah Humairah Putri D</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.8</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Adinda Rasiyah</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Sains</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 5 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">5</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 5</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">A.M. Adriandy Hisyam Habibie</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.1</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Dzakirah Talita Zahra B</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas 9.5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 6 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">6</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 6</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Athalia Aisah Fortuna P.</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.4</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Qaysar Khasyin Bahdar</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas 9.1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 7 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">7</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 7</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Azzahra Rabiatul</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.1</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Aridha Putri Nurhayat</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Skill</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 8 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">8</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 8</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Muwafiq Muhammad</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Informatika</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Ince Muh. Akbar Dava</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Billingual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 9 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">9</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 9</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Adibah Zuleika Bakri</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Informatika</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Keisha Dayana Batrisya Aswan</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Billingual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekbid 10 -->
+                    <div
+                        class="bg-white border rounded-lg shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-sm font-bold text-emerald-600">10</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900">Seksi Bidang 10</h3>
+                            </div>
+
+                            <div class="mb-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-emerald-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Kirana Khaerani</h4>
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm">Kelas
+                                    9.Informatika</span>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-600 mr-2"></i>
+                                    <span class="text-sm font-medium text-gray-600">Wakil Koordinator</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Naurah Shabirah Zalfa</h4>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kelas 9.5</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- News Section (keeping brief - add animated-item) -->
+    <!-- News Section -->
     <section id="berita" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animated-item">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Berita & Pengumuman
                 </h2>
@@ -929,108 +1164,134 @@
                 </p>
             </div>
 
-            <!-- Featured News Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- News Card 1 - LKTIJ -->
+            <!-- Featured News -->
+            <div class="mb-12">
                 <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover-lift transition-all duration-300 group animated-item">
-                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100">
-                        <img id="slideshow-img" src="LKTIJ/1.webp" alt="LKTIJ"
-                            class="w-full h-full object-cover transition-opacity duration-1000 opacity-100" loading="lazy">
-                        <div
-                            class="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Acara Terkini
+                    class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="lg:flex">
+                        <div class="lg:w-1/2 relative">
+                            <div class="slideshow w-full relative">
+                                <img id="slideshow-upgr" src="UPGR/1.webp"
+                                    class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 p-8">
+                            <div class="flex items-center mb-4">
+                                <span
+                                    class="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-full text-sm mr-4">Pengumuman</span>
+                                <div class="flex items-center text-gray-500 text-sm">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
+                                    14-15 Juni 2025
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                                Upgrading Pengurus OSIM Periode 2025/2026
+                            </h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Meningkatkan kapasitas, kekompakan, dan semangat kerja para pengurus agar lebih siap
+                                menjalankan tugas organisasi.
+                            </p>
+                            <button onclick="window.location.href='Pelantikan.html'"
+                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200 flex items-center">
+                                Baca Selengkapnya
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- News Grid -->
+            <div class="flex flex-col md:flex-row gap-4">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                    <div class="relative h-48 bg-blue-100 overflow-hidden rounded-lg">
+                        <img id="slideshow-ldk" src="LDK/1.webp"
+                            class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
-                            <span>16-17 Februari 2025</span>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">LDK</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
+                                19-21 September 2025
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                            LKTIJ (Latihan Kepenulisan dan Jurnalistik Islami)
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                            Latihan Dasar Kepemimpinan
                         </h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            Kegiatan pelatihan jurnalistik islami untuk meningkatkan keterampilan menulis dan kepekaan
-                            sosial siswa
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Workshop kepemimpinan untuk mengembangkan soft skill dan karakter anggota.
                         </p>
-                        <a href="#"
-                            class="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium">
-                            Baca Selengkapnya
-                            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </a>
+                        <button
+                            class="border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Segera Dilaksanakan Pada 19-21 September 2025
+                        </button>
                     </div>
                 </div>
 
-                <!-- News Card 2 - LDK -->
                 <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover-lift transition-all duration-300 group animated-item">
-                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
-                        <img id="slideshow-ldk" src="LDK/1.webp" alt="LDK"
-                            class="w-full h-full object-cover transition-opacity duration-1000 opacity-100" loading="lazy">
-                        <div
-                            class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Acara Terkini
-                        </div>
+                    class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300">
+                    <div class="relative h-48 bg-emerald-100 overflow-hidden rounded-lg">
+                        <img id="slideshow-img" src="LKTIJ/1.webp"
+                            class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
-                            <span>14-16 Februari 2025</span>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">LKTIJ</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
+                                Segera Datang!
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                            LDK (Latihan Dasar Kepemimpinan)
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                            Latihan Karya Tulis Ilmiah dan Jurnalistik
                         </h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            Pelatihan kepemimpinan bagi seluruh pengurus OSIM untuk membangun karakter dan keterampilan
-                            organisasi
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Kompetisi seni budaya untuk menampilkan bakat siswa dalam berbagai bidang kesenian.
                         </p>
-                        <a href="#"
-                            class="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium">
-                            Baca Selengkapnya
-                            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </a>
+                        <button
+                            class="border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Segera Datang!
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                <!-- News Card 3 - Upgrading -->
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover-lift transition-all duration-300 group animated-item">
-                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
-                        <img id="slideshow-upgr" src="UPGR/1.webp" alt="Upgrading"
-                            class="w-full h-full object-cover transition-opacity duration-1000 opacity-100" loading="lazy">
-                        <div
-                            class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Acara Terkini
+            <!-- Newsletter -->
+            <div class="mt-16">
+                <div class="bg-emerald-600 text-white rounded-lg overflow-hidden">
+                    <div class="p-8 lg:p-12">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-4">
+                                Dapatkan Update Terbaru
+                            </h3>
+                            <p class="text-emerald-100 mb-6 max-w-2xl mx-auto">
+                                Jangan lewatkan berita dan pengumuman penting dari OSIM MTsN 1 Makassar.
+                                Ikuti media sosial kami untuk mendapatkan informasi terkini.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <button onclick="window.open('https://www.instagram.com/osim.tsansa','_blank')"
+                                    class="bg-white text-emerald-600 hover:bg-gray-100 px-6 py-2 rounded-md font-medium transition-colors duration-200">
+                                    Follow Instagram
+                                </button>
+                                <button onclick="window.open('https://www.tiktok.com/@osim.tsansa','_blank')"
+                                    class="border border-white text-white hover:bg-white hover:text-emerald-600 px-6 py-2 rounded-md font-medium transition-colors duration-200">
+                                    Follow TikTok
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
-                            <span>14-15 Juni 2025</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                            Upgrading Pengurus OSIM 2025/2026
-                        </h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            Kegiatan pembekalan dan peningkatan kapasitas pengurus OSIM periode 2025/2026
-                        </p>
-                        <a href="Pelantikan.html"
-                            class="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium">
-                            Baca Selengkapnya
-                            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section with Optimized Show/Hide -->
+    <!-- Gallery Section -->
     <section id="galeri" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animated-item">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Galeri Kegiatan
                 </h2>
@@ -1041,176 +1302,149 @@
             </div>
 
             <!-- Category Filters -->
-            <div class="flex flex-wrap justify-center gap-2 mb-8 animated-item">
-                <button class="gallery-filter bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium transition"
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="gallery-filter bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium"
                     data-category="all">Semua</button>
                 <button
-                    class="gallery-filter bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium transition"
+                    class="gallery-filter bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium"
                     data-category="Upgrading">Upgrading</button>
                 <button
-                    class="gallery-filter bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium transition"
+                    class="gallery-filter bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium"
                     data-category="LDK">LDK</button>
                 <button
-                    class="gallery-filter bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium transition"
+                    class="gallery-filter bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium"
                     data-category="LKTIJ">LKTIJ</button>
             </div>
 
             <!-- Gallery Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-grid">
-                <!-- Initial 8 items visible -->
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/2.webp" alt="Pembukaan Upgrading"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/2.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Pembukaan Upgrading</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Pembukaan Upgrading</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/4.webp" alt="Sesi Materi"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/4.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sesi Materi</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sesi Materi</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/3.webp" alt="Sesi Materi"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/3.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sesi Materi</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sesi Materi</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/5.webp" alt="Sambutan Ketua Panitia"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/5.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Ketua Panitia</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Ketua Panitia</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/6.webp" alt="Sambutan Ketua OSIM"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/6.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Ketua OSIM</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Ketua OSIM</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/7.webp" alt="Sambutan Kepala Madrasah"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/7.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Kepala Madrasah</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Kepala Madrasah</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/8.webp" alt="Sambutan Pembina OSIM"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/8.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Pembina OSIM</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Sambutan Pembina OSIM</h3>
                     </div>
                 </div>
-
-                <div class="gallery-item parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/9.webp" alt="Paduan Suara"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/9.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Paduan Suara</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Paduan Suara</h3>
                     </div>
                 </div>
-
-                <!-- Initially hidden items -->
-                <div class="gallery-item initially-hidden parallax-element" data-category="Upgrading" data-speed="0.1">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="UPGR/1.webp" alt="Pembacaan Al Qur'an"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                loading="lazy">
-                            <span
-                                class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg hover-lift transition-all duration-300 group cursor-pointer"
+                    data-category="Upgrading">
+                    <div class="relative h-48 bg-emerald-100 flex items-center justify-center overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                            <img src="UPGR/1.webp">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">Pembacaan Al Qur'an</h3>
-                        </div>
+                        <span
+                            class="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white px-3 py-1 rounded-full text-sm">Upgrading</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 text-sm leading-tight">Pembacaan Al Qur'an</h3>
                     </div>
                 </div>
-                <!-- Add more gallery items here as needed -->
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-8">
-                <button id="load-more-btn"
-                    class="px-8 py-3 bg-emerald-600 text-white rounded-md font-medium hover:bg-emerald-700 transition-colors">
-                    Muat Lebih Banyak
-                </button>
+                <!-- Add more gallery items here -->
             </div>
         </div>
     </section>
@@ -1219,7 +1453,7 @@
     <section id="kontak" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animated-item">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Hubungi Kami
                 </h2>
@@ -1231,7 +1465,7 @@
 
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Contact Information -->
-                <div class="space-y-8 animated-item">
+                <div class="space-y-8 mr-6">
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-6">
                             Informasi Kontak
@@ -1264,7 +1498,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 mb-1">Telepon (WA)</h4>
-                                    <p class="text-gray-600">(0411) 863350</p>
+                                    <p class="text-gray-600"><b>Ketua OSIM</b>, +62 811-4443-100</p>
+                                    <p class="text-gray-600"><b>Wakil Ketua OSIM</b>, +62 823-4383-4646</p>
                                 </div>
                             </div>
                         </div>
@@ -1282,50 +1517,64 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Social Media -->
-                        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                            <h4 class="font-semibold text-gray-900 mb-4">Media Sosial</h4>
-                            <div class="flex space-x-4">
-                                <a href="#"
-                                    class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 transition">
-                                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 transition">
-                                    <i data-lucide="facebook" class="w-5 h-5"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 transition">
-                                    <i data-lucide="youtube" class="w-5 h-5"></i>
-                                </a>
-                            </div>
+                    <!-- Social Media -->
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-4">Media Sosial</h4>
+                        <div class="flex space-x-4">
+                            <button
+                                class="bg-black hover:bg-gray-900 text-white px-4 py-2 rounded-md flex items-center transition-colors duration-200">
+                                <img src="tiktok-logo.webp" class="w-5 h-5 mr-2">
+                                Tiktok
+                            </button>
+                            <button
+                                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-md flex items-center transition-colors duration-200">
+                                <i data-lucide="instagram" class="w-4 h-4 mr-2"></i>
+                                Instagram
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Map or Image -->
-                <div class="animated-item">
-                    <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg h-full min-h-[500px]">
-                        <!-- You can replace this with an actual Google Maps embed -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.7558087647446!2d119.43889597475824!3d-5.151066951892396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee30578880983%3A0x2e8e4e5bc0a2b8a9!2sMTsN%201%20Makassar!5e0!3m2!1sen!2sid!4v1701234567890!5m2!1sen!2sid"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                <!-- Maps -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.569558602758!2d119.42925697444268!3d-5.172716852223392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefd4a1488257f%3A0x42ae573487f2c013!2sMadrasah%20Tsanawiyah%20Negeri%201%20Makassar!5e0!3m2!1sid!2sid!4v1757859088953!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Program Detail Modal -->
+    <div id="program-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg max-w-4xl max-h-[80vh] overflow-y-auto mx-4 w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-900"></h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <h4 id="modal-subtitle" class="text-lg font-medium text-emerald-600 mb-4"></h4>
+                <div id="modal-content" class="space-y-4">
+                    <!-- Program details will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Brand -->
                 <div class="lg:col-span-1">
                     <div class="flex items-center space-x-3 mb-4">
-                        <img src="Logo OSIM.png" class="w-10 h-10 rounded-full" alt="Logo OSIM" loading="lazy">
+                        <img src="Logo OSIM.webp" class="w-10 h-10  rounded-full flex items-center justify-center">
                         <div>
                             <h3 class="text-lg font-bold">OSIM</h3>
                             <p class="text-sm text-gray-400">MTsN 1 Makassar</p>
@@ -1336,18 +1585,14 @@
                         serta berkarakter disiplin dan berakhlak mulia.
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
-                            class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 hover:scale-110 transition-all duration-300">
+                        <div
+                            class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center hover:bg-pink-600 hover:scale-110 transition-transform transition-colors duration-300 cursor-pointer">
                             <i data-lucide="instagram" class="w-4 h-4"></i>
-                        </a>
-                        <a href="#"
-                            class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 hover:scale-110 transition-all duration-300">
-                            <i data-lucide="facebook" class="w-4 h-4"></i>
-                        </a>
-                        <a href="#"
-                            class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 hover:scale-110 transition-all duration-300">
-                            <i data-lucide="youtube" class="w-4 h-4"></i>
-                        </a>
+                        </div>
+                        <div
+                            class="w-8 h-8 bg-black rounded-full flex items-center justify-center hover:bg-gray-900 hover:scale-110 transition-transform transition-colors duration-300 cursor-pointer">
+                            <img src="tiktok-logo.png" class="w-4 h-4">
+                        </div>
                     </div>
                 </div>
 
@@ -1355,10 +1600,8 @@
                 <div>
                     <h4 class="text-white font-semibold mb-4">Menu Utama</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#beranda" class="text-gray-400 hover:text-white transition-colors">Beranda</a>
-                        </li>
-                        <li><a href="#tentang" class="text-gray-400 hover:text-white transition-colors">Tentang</a>
-                        </li>
+                        <li><a href="#beranda" class="text-gray-400 hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="#tentang" class="text-gray-400 hover:text-white transition-colors">Tentang</a></li>
                         <li><a href="#program" class="text-gray-400 hover:text-white transition-colors">Program
                                 Kerja</a></li>
                         <li><a href="#anggota" class="text-gray-400 hover:text-white transition-colors">Anggota</a></li>
@@ -1366,28 +1609,35 @@
                         <li><a href="#galeri" class="text-gray-400 hover:text-white transition-colors">Galeri</a></li>
                     </ul>
                 </div>
-
                 <!-- Contact Info -->
                 <div>
                     <h4 class="text-white font-semibold mb-4">Kontak</h4>
                     <div class="space-y-3 text-sm">
+                        <!-- Address -->
                         <div class="flex items-start space-x-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
                             <span class="text-gray-400 leading-relaxed">
                                 Jl. A.P. Pettarani No.1A, Mannuruki, Kec. Tamalate, Kota Makassar, Sulawesi Selatan
-                                90221
-                            </span>
+                                90221 </span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i>
-                            <span class="text-gray-400">(0411) 863350</span>
+
+                        <!-- Phone -->
+                        <div class="flex items-start space-x-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0"></i>
+                            <div class="flex flex-col">
+                                <span class="text-gray-400">+62 811-4443-100</span>
+                                <span class="text-gray-400">+62 823-4383-4646</span>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i>
+
+                        <!-- Email -->
+                        <div class="flex items-start space-x-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
                             <span class="text-gray-400">osimmtsn1makassar@gmail.com</span>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8">
@@ -1408,62 +1658,6 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
-
-        // Parallax effect
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    const parallaxElements = document.querySelectorAll('.parallax-element');
-
-                    parallaxElements.forEach(element => {
-                        const speed = element.dataset.speed || 0.5;
-                        const yPos = -(scrolled * speed);
-                        element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-                    });
-
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animated-item').forEach(item => {
-            observer.observe(item);
-        });
-
-        // Lazy load images
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            imageObserver.observe(img);
-        });
 
         // Program data
         const programData = {
@@ -1658,6 +1852,7 @@
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
 
+            // Re-initialize icons for the close button
             lucide.createIcons();
         }
 
@@ -1713,6 +1908,7 @@
         const tabContents = document.querySelectorAll('.tab-content');
 
         function switchTab(targetTab) {
+            // Remove active class from all buttons and contents
             tabButtons.forEach(btn => {
                 btn.classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
                 btn.classList.add('text-gray-600');
@@ -1721,6 +1917,7 @@
                 content.classList.remove('active');
             });
 
+            // Add active class to target button and content
             const targetButton = document.getElementById(`tab-${targetTab}`);
             const targetContent = document.getElementById(`content-${targetTab}`);
 
@@ -1740,6 +1937,7 @@
             filter.addEventListener('click', () => {
                 const category = filter.getAttribute('data-category');
 
+                // Update active filter button
                 galleryFilters.forEach(btn => {
                     btn.classList.remove('bg-emerald-600', 'text-white');
                     btn.classList.add('bg-gray-200', 'text-gray-700');
@@ -1747,46 +1945,15 @@
                 filter.classList.add('bg-emerald-600', 'text-white');
                 filter.classList.remove('bg-gray-200', 'text-gray-700');
 
+                // Filter gallery items
                 galleryItems.forEach(item => {
-                    const isHidden = item.classList.contains('initially-hidden');
                     if (category === 'all' || item.getAttribute('data-category') === category) {
-                        if (!isHidden) {
-                            item.classList.remove('hidden');
-                        }
+                        item.classList.remove('hidden');
                     } else {
                         item.classList.add('hidden');
                     }
                 });
             });
-        });
-
-        // Gallery Load More functionality
-        const loadMoreBtn = document.getElementById('load-more-btn');
-        let galleryExpanded = false;
-
-        loadMoreBtn.addEventListener('click', () => {
-            const hiddenItems = document.querySelectorAll('.gallery-item.initially-hidden');
-
-            if (!galleryExpanded) {
-                hiddenItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.remove('initially-hidden');
-                        item.classList.add('show');
-                    }, index * 50);
-                });
-                loadMoreBtn.textContent = 'Sembunyikan';
-                galleryExpanded = true;
-            } else {
-                hiddenItems.forEach(item => {
-                    item.classList.add('initially-hidden');
-                    item.classList.remove('show');
-                });
-                loadMoreBtn.textContent = 'Muat Lebih Banyak';
-                galleryExpanded = false;
-
-                // Scroll to gallery section
-                document.getElementById('galeri').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
         });
 
         // Smooth scrolling for navigation links
@@ -1803,64 +1970,40 @@
             });
         });
 
-        // Hero slideshow
-        const LDK = Array.from({ length: 10 }, (_, i) => `LDK/${i + 1}.webp`);
-        const LKTIJ = Array.from({ length: 10 }, (_, i) => `LKTIJ/${i + 1}.webp`);
-        const UPGR = Array.from({ length: 8 }, (_, i) => `UPGR/${i + 1}.webp`);
-        const heroImages = [...LDK, ...LKTIJ, ...UPGR];
+        const folder = "LKTIJ/";
+        const totalImages = 10;
+        const imgElement = document.getElementById("slideshow-img");
+        let lastIndex = 1; // to avoid repeating the same image twice
 
-        const slidesContainer = document.getElementById("hero-slides");
-        heroImages.forEach((src, i) => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.alt = "Gallery image";
-            img.loading = i < 3 ? "eager" : "lazy";
-            img.className = "w-full h-[420px] object-cover absolute inset-0 transition-opacity duration-700 " + (i === 0 ? "opacity-100" : "opacity-0");
-            slidesContainer.appendChild(img);
-        });
-
-        let currentSlide = 0;
-        const slides = slidesContainer.querySelectorAll("img");
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = (i === index) ? "1" : "0";
-            });
+        function getRandomIndex() {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * totalImages) + 1;
+            } while (randomIndex === lastIndex);
+            lastIndex = randomIndex;
+            return randomIndex;
         }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        // Auto-play every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // News section slideshow
-        const folderLKTIJ = "LKTIJ/";
-        const totalLKTIJ = 10;
-        const imgLKTIJ = document.getElementById("slideshow-img");
-        let lastLKTIJ = 1;
 
         setInterval(() => {
-            imgLKTIJ.classList.remove("opacity-100");
-            imgLKTIJ.classList.add("opacity-0");
+            // fade out
+            imgElement.classList.remove("opacity-100");
+            imgElement.classList.add("opacity-0");
 
+            // wait for fade-out before changing image
             setTimeout(() => {
-                lastLKTIJ = (lastLKTIJ % totalLKTIJ) + 1;
-                imgLKTIJ.src = `${folderLKTIJ}${lastLKTIJ}.webp`;
-                imgLKTIJ.classList.remove("opacity-0");
-                imgLKTIJ.classList.add("opacity-100");
-            }, 1000);
-        }, 4000);
+                const randomIndex = getRandomIndex();
+                imgElement.src = `${folder}${randomIndex}.webp`;
 
+                // fade in
+                imgElement.classList.remove("opacity-0");
+                imgElement.classList.add("opacity-100");
+            }, 1000); // match duration-1000
+        }, 4000); // total display time per image
+
+
+        // --- LDK Slideshow ---
         const folderLDK = "LDK/";
-        const totalLDK = 10;
+        const totalLDK = 10; // adjust number of images in LDK folder
         const imgLDK = document.getElementById("slideshow-ldk");
         let lastLDK = 1;
 
@@ -1869,13 +2012,14 @@
             imgLDK.classList.add("opacity-0");
 
             setTimeout(() => {
-                lastLDK = (lastLDK % totalLDK) + 1;
+                lastLDK = getRandomIndex(totalLDK, lastLDK);
                 imgLDK.src = `${folderLDK}${lastLDK}.webp`;
                 imgLDK.classList.remove("opacity-0");
                 imgLDK.classList.add("opacity-100");
             }, 1000);
         }, 4000);
 
+        // --- UpGr Slideshow ---
         const folderUPGR = "UPGR/";
         const totalUPGR = 8;
         const imgUPGR = document.getElementById("slideshow-upgr");
@@ -1886,12 +2030,57 @@
             imgUPGR.classList.add("opacity-0");
 
             setTimeout(() => {
-                lastUPGR = (lastUPGR % totalUPGR) + 1;
+                lastUPGR = getRandomIndex(totalUPGR, lastUPGR);
                 imgUPGR.src = `${folderUPGR}${lastUPGR}.webp`;
                 imgUPGR.classList.remove("opacity-0");
                 imgUPGR.classList.add("opacity-100");
             }, 1000);
         }, 4000);
+        // Generate image lists
+        const LDK = Array.from({ length: 10 }, (_, i) => `LDK/${i + 1}.webp`);
+        const LKTIJ = Array.from({ length: 10 }, (_, i) => `LKTIJ/${i + 1}.webp`);
+        const UPGR = Array.from({ length: 8 }, (_, i) => `UPGR/${i + 1}.webp`);
+
+
+        // Combine all images
+        const heroImages = [...LDK, ...LKTIJ, ...UPGR];
+
+
+        // Insert images into DOM
+        const slidesContainer = document.getElementById("hero-slides");
+        heroImages.forEach((src, i) => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.className = "w-full h-[420px] object-cover absolute inset-0 transition-opacity duration-700 " + (i === 0 ? "opacity-100" : "opacity-0");
+            slidesContainer.appendChild(img);
+        });
+
+
+        let currentSlide = 0;
+        const slides = slidesContainer.querySelectorAll("img");
+
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = (i === index) ? "1" : "0";
+            });
+        }
+
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+
+        // Auto-play every 5 seconds
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 
