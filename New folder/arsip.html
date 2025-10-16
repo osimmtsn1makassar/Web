@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip - OSIM MTsN 1 Makassar</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .islamic-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .archive-card {
+            transition: all 0.3s ease;
+        }
+
+        .archive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen islamic-pattern">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="Logo OSIM.png" alt="Logo OSIM" class="h-12 w-12 object-contain">
+                <div>
+                    <h1 class="text-xl font-bold text-green-600">OSIM MTsN 1 Makassar</h1>
+                    <p class="text-xs text-gray-600">Pusat Arsip & Dokumentasi</p>
+                </div>
+            </div>
+            <a href="index.html" class="flex items-center gap-2 text-green-600 hover:text-green-700 transition">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="hidden sm:inline">Beranda</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Pusat Arsip
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Akses lengkap dokumentasi dan arsip organisasi OSIM MTsN 1 Makassar
+            </p>
+        </div>
+
+        <!-- Archive Categories Grid -->
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Arsip Rapat -->
+            <a href="rapat.html" class="archive-card bg-white rounded-xl shadow-lg p-6 fade-in" style="animation-delay: 0.1s" data-testid="card-rapat">
+                <div class="bg-gradient-to-br from-green-100 to-green-200 p-4 rounded-lg mb-4 inline-block">
+                    <i data-lucide="users" class="w-10 h-10 text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Arsip Rapat</h3>
+                <p class="text-gray-600 mb-4">Dokumentasi rapat-rapat OSIM dengan detail peserta dan hasil keputusan</p>
+                <div class="flex items-center text-green-600 font-medium">
+                    <span>Lihat Arsip</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </div>
+            </a>
+
+            <!-- Arsip Dokumen PDF -->
+            <a href="dokumen.html" class="archive-card bg-white rounded-xl shadow-lg p-6 fade-in" style="animation-delay: 0.2s" data-testid="card-dokumen">
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-4 rounded-lg mb-4 inline-block">
+                    <i data-lucide="file-text" class="w-10 h-10 text-blue-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Dokumen PDF</h3>
+                <p class="text-gray-600 mb-4">Kumpulan dokumen penting organisasi dalam format PDF</p>
+                <div class="flex items-center text-blue-600 font-medium">
+                    <span>Lihat Dokumen</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </div>
+            </a>
+
+            <!-- Laporan Kegiatan -->
+            <a href="laporan.html" class="archive-card bg-white rounded-xl shadow-lg p-6 fade-in" style="animation-delay: 0.3s" data-testid="card-laporan">
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 p-4 rounded-lg mb-4 inline-block">
+                    <i data-lucide="clipboard-list" class="w-10 h-10 text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Kegiatan</h3>
+                <p class="text-gray-600 mb-4">Laporan lengkap kegiatan dan program kerja OSIM</p>
+                <div class="flex items-center text-purple-600 font-medium">
+                    <span>Lihat Laporan</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </div>
+            </a>
+
+            <!-- Surat Keluar -->
+            <a href="surat.html" class="archive-card bg-white rounded-xl shadow-lg p-6 fade-in" style="animation-delay: 0.4s" data-testid="card-surat">
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 p-4 rounded-lg mb-4 inline-block">
+                    <i data-lucide="mail" class="w-10 h-10 text-orange-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Surat Keluar</h3>
+                <p class="text-gray-600 mb-4">Arsip surat-surat resmi yang diterbitkan OSIM</p>
+                <div class="flex items-center text-orange-600 font-medium">
+                    <span>Lihat Surat</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </div>
+            </a>
+
+            <!-- Foto Kegiatan -->
+            <a href="index.html#galeri" class="archive-card bg-white rounded-xl shadow-lg p-6 fade-in" style="animation-delay: 0.5s" data-testid="card-foto">
+                <div class="bg-gradient-to-br from-pink-100 to-pink-200 p-4 rounded-lg mb-4 inline-block">
+                    <i data-lucide="image" class="w-10 h-10 text-pink-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Foto Kegiatan</h3>
+                <p class="text-gray-600 mb-4">Galeri foto dokumentasi kegiatan OSIM</p>
+                <div class="flex items-center text-pink-600 font-medium">
+                    <span>Lihat Galeri</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="max-w-6xl mx-auto mt-16 fade-in" style="animation-delay: 0.7s">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Statistik Arsip</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-green-600 mb-2">24</div>
+                        <div class="text-gray-600 text-sm">Arsip Rapat</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600 mb-2">156</div>
+                        <div class="text-gray-600 text-sm">Dokumen PDF</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-600 mb-2">42</div>
+                        <div class="text-gray-600 text-sm">Laporan Kegiatan</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-600 mb-2">89</div>
+                        <div class="text-gray-600 text-sm">Surat Keluar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-6 border-t">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>&copy; 2025 OSIM MTsN 1 Makassar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>

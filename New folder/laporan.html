@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Kegiatan - OSIM MTsN 1 Makassar</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .islamic-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.active {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen islamic-pattern">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="Logo OSIM.png" alt="Logo OSIM" class="h-12 w-12 object-contain">
+                <div>
+                    <h1 class="text-xl font-bold text-green-600">OSIM MTsN 1 Makassar</h1>
+                    <p class="text-xs text-gray-600">Laporan Kegiatan</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="arsip.html" class="flex items-center gap-2 text-green-600 hover:text-green-700 transition">
+                    <i data-lucide="archive" class="w-5 h-5"></i>
+                    <span class="hidden sm:inline">Arsip</span>
+                </a>
+                <a href="index.html" class="flex items-center gap-2 text-green-600 hover:text-green-700 transition">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                    <span class="hidden sm:inline">Beranda</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Laporan Kegiatan
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Laporan pertanggungjawaban kegiatan dan program kerja OSIM MTsN 1 Makassar
+            </p>
+        </div>
+
+        <!-- Report Archive Section -->
+        <div class="max-w-4xl mx-auto space-y-4">
+            
+            <!-- Report 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in" style="animation-delay: 0.1s">
+                <button onclick="toggleAccordion(1)" 
+                        class="w-full px-6 py-5 flex items-center justify-between hover:bg-purple-50 transition" 
+                        data-testid="report-1-toggle">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-purple-100 p-3 rounded-lg">
+                            <i data-lucide="clipboard-check" class="w-6 h-6 text-purple-600"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">LPJ Pekan Seni & Budaya 2025</h3>
+                            <p class="text-sm text-gray-500">Laporan Pertanggungjawaban</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-gray-400 chevron-icon" id="chevron-1"></i>
+                </button>
+                <div class="accordion-content px-6 pb-6" id="content-1" data-testid="report-1-content">
+                    <div class="border-t pt-4 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="calendar" class="w-5 h-5 text-purple-600"></i>
+                            <span class="text-gray-700"><strong>Tanggal Kegiatan:</strong> 15-17 Februari 2025</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="info" class="w-5 h-5 text-purple-600 mt-1"></i>
+                            <div>
+                                <strong class="text-gray-700">Ringkasan:</strong>
+                                <p class="mt-2 text-gray-600">Kegiatan Pekan Seni & Budaya berlangsung selama 3 hari dengan berbagai lomba dan penampilan seni dari siswa. Total peserta mencapai 450 siswa dengan 25 jenis lomba.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mt-4">
+                            <a href="pdf-viewer.html?file=https://raw.githubusercontent.com/user/repo/main/laporan/lpj-pekan-seni-2025.pdf" 
+                               class="flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
+                               data-testid="view-report-1">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Lihat Laporan
+                            </a>
+                            <a href="https://raw.githubusercontent.com/user/repo/main/laporan/lpj-pekan-seni-2025.pdf" 
+                               download
+                               class="flex items-center gap-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in" style="animation-delay: 0.2s">
+                <button onclick="toggleAccordion(2)" 
+                        class="w-full px-6 py-5 flex items-center justify-between hover:bg-purple-50 transition"
+                        data-testid="report-2-toggle">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-green-100 p-3 rounded-lg">
+                            <i data-lucide="clipboard-check" class="w-6 h-6 text-green-600"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Kegiatan Bakti Sosial Ramadan</h3>
+                            <p class="text-sm text-gray-500">Januari 2025</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-gray-400 chevron-icon" id="chevron-2"></i>
+                </button>
+                <div class="accordion-content px-6 pb-6" id="content-2" data-testid="report-2-content">
+                    <div class="border-t pt-4 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="calendar" class="w-5 h-5 text-green-600"></i>
+                            <span class="text-gray-700"><strong>Tanggal Kegiatan:</strong> 25 Januari 2025</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="info" class="w-5 h-5 text-green-600 mt-1"></i>
+                            <div>
+                                <strong class="text-gray-700">Ringkasan:</strong>
+                                <p class="mt-2 text-gray-600">Kegiatan bakti sosial dengan membagikan 200 paket sembako kepada warga kurang mampu di sekitar madrasah. Diikuti oleh 50 pengurus dan anggota OSIM.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mt-4">
+                            <a href="pdf-viewer.html?file=https://raw.githubusercontent.com/user/repo/main/laporan/baksos-ramadan-2025.pdf" 
+                               class="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+                               data-testid="view-report-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Lihat Laporan
+                            </a>
+                            <a href="https://raw.githubusercontent.com/user/repo/main/laporan/baksos-ramadan-2025.pdf" 
+                               download
+                               class="flex items-center gap-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in" style="animation-delay: 0.3s">
+                <button onclick="toggleAccordion(3)" 
+                        class="w-full px-6 py-5 flex items-center justify-between hover:bg-purple-50 transition"
+                        data-testid="report-3-toggle">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-100 p-3 rounded-lg">
+                            <i data-lucide="clipboard-check" class="w-6 h-6 text-blue-600"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Studi Banding ke OSIS SMAN 5 Makassar</h3>
+                            <p class="text-sm text-gray-500">Desember 2024</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-gray-400 chevron-icon" id="chevron-3"></i>
+                </button>
+                <div class="accordion-content px-6 pb-6" id="content-3" data-testid="report-3-content">
+                    <div class="border-t pt-4 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i>
+                            <span class="text-gray-700"><strong>Tanggal Kegiatan:</strong> 15 Desember 2024</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="info" class="w-5 h-5 text-blue-600 mt-1"></i>
+                            <div>
+                                <strong class="text-gray-700">Ringkasan:</strong>
+                                <p class="mt-2 text-gray-600">Kegiatan kunjungan dan berbagi pengalaman dengan OSIS SMAN 5 Makassar. Membahas program kerja, sistem manajemen organisasi, dan best practices.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mt-4">
+                            <a href="pdf-viewer.html?file=https://raw.githubusercontent.com/user/repo/main/laporan/studi-banding-2024.pdf" 
+                               class="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                               data-testid="view-report-3">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Lihat Laporan
+                            </a>
+                            <a href="https://raw.githubusercontent.com/user/repo/main/laporan/studi-banding-2024.pdf" 
+                               download
+                               class="flex items-center gap-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-6 border-t">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>&copy; 2025 OSIM MTsN 1 Makassar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Accordion toggle function
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const chevron = document.getElementById(`chevron-${id}`);
+            
+            // Toggle active class
+            content.classList.toggle('active');
+            chevron.classList.toggle('rotate-180');
+        }
+    </script>
+
+</body>
+
+</html>
