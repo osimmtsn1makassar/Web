@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDK OSIM 2025 - OSIM MTsN 1 Makassar</title>
+    
+        <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="Logo OSIM.webp">
+    <link rel="shortcut icon" type="image/jpeg" href="Logo OSIM.webp">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #10b981;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #d1fae5;
+        }
+
+        .image-gallery img {
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div onclick="window.location.href='index.html'" class="cursor-pointer">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-3">
+                        <img src="Logo OSIM.png" class="w-12 h-12 rounded-full" alt="Logo OSIM" loading="eager">
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900">OSIM</h1>
+                            <p class="text-sm text-gray-600">MTsN 1 Makassar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Home Button -->
+                <a href="index.html"
+                    class="flex items-center space-x-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200 font-medium">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>Kembali</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 fade-in">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="newspaper" class="w-4 h-4"></i>
+                    <span class="text-sm font-medium">Berita OSIM</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold mb-4">
+                    OSIM MTsN 1 Makassar Sukses Gelar LDK 2025, Cetak Pemimpin Muda Berkarakter
+                </h1>
+                <div class="flex items-center justify-center space-x-4 text-emerald-100 text-sm">
+                    <div class="flex items-center space-x-1">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>21 September 2025</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        <span>Tim Publikasi OSIM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Featured Image -->
+        <div class="mb-8 fade-in">
+            <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-100 aspect-video flex items-center justify-center">
+                <div class="text-center p-8">
+                    <i data-lucide="users" class="w-24 h-24 text-emerald-600 mx-auto mb-4"></i>
+                    <p class="text-gray-600 font-medium">Dokumentasi Kegiatan LDK 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Article -->
+        <article class="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 fade-in">
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                <strong>Makassar</strong> – Organisasi Siswa Intra Madrasah (OSIM) MTsN 1 Makassar sukses menyelenggarakan 
+                kegiatan Latihan Dasar Kepemimpinan (LDK) periode 2025/2026 yang berlangsung selama tiga hari, 
+                mulai 19 hingga 21 September 2025. Kegiatan yang mengusung tema <em>"Perjuangan Dan Pengorbanan, 
+                Ikhlaskan Hati, Dan Tegakkan Asa Peradaban Dengan Cahaya Cinta"</em> ini diikuti oleh puluhan siswa 
+                calon pengurus dan anggota OSIM.
+            </p>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-lg my-8">
+                <p class="text-emerald-900 font-semibold mb-2">Motto Kegiatan:</p>
+                <p class="text-emerald-800 text-xl italic">"Berjuang Dengan Ikhlas, Bersinar Dengan Cinta"</p>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Ragam Materi Kepemimpinan</h3>
+            
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Selama tiga hari kegiatan, peserta mendapatkan berbagai materi kepemimpinan yang komprehensif. 
+                Materi-materi tersebut meliputi Persidangan, Manajemen Keorganisasian, Kesekretariatan, 
+                Kerangka Berpikir IESQ (Intelektual, Emosional, dan Spiritual Quotient), Membangun Komunikasi Efektif, 
+                serta Membangun Kerja Sama Tim.
+            </p>
+
+
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Pentas Seni Hingga Outbound</h3>
+            
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Kegiatan dibuka dengan penampilan memukau dari Sanggar Tari Padaidi yang membawakan tarian 
+                tradisional khas Makassar. Acara dilanjutkan dengan pentas seni dari para peserta yang 
+                menampilkan berbagai talenta seni dan budaya. Momen ini menjadi ajang untuk mempererat 
+                keakraban antar peserta sekaligus menunjukkan keberagaman bakat yang dimiliki siswa MTsN 1 Makassar.
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Di hari terakhir, peserta mengikuti kegiatan outbound yang menguji kekompakan dan kerja sama tim. 
+                Berbagai permainan dan simulasi kepemimpinan dirancang untuk mengasah kemampuan problem solving, 
+                komunikasi, dan pengambilan keputusan dalam situasi yang menantang.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 my-8">
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">3</div>
+                    <p class="text-gray-600">Hari Kegiatan</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">6</div>
+                    <p class="text-gray-600">Materi Pembelajaran</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">7</div>
+                    <p class="text-gray-600">Divisi Kepanitiaan</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 p-6 rounded-xl my-8">
+                <h4 class="font-bold text-gray-900 mb-3 flex items-center space-x-2">
+                    <i data-lucide="quote" class="w-5 h-5 text-emerald-600"></i>
+                    <span>Testimoni Peserta</span>
+                </h4>
+                <p class="text-gray-700 italic mb-2">
+                    "LDK ini memberikan pengalaman berharga tentang pentingnya kerja sama dan komunikasi dalam 
+                    organisasi. Saya merasa lebih percaya diri untuk berkontribusi di OSIM."
+                </p>
+                <p class="text-sm text-gray-600">- Peserta LDK 2025</p>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Komitmen Pengembangan Organisasi</h3>
+            
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Kegiatan LDK 2025 ditutup dengan sesi foto bersama. 
+                Para peserta berkomitmen untuk menerapkan ilmu yang telah didapat dalam kegiatan organisasi dan 
+                kehidupan sehari-hari.
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Dengan suksesnya pelaksanaan LDK tahun ini, OSIM MTsN 1 Makassar optimis dapat terus 
+                berkontribusi dalam pengembangan karakter dan kepemimpinan siswa. Kegiatan serupa direncanakan 
+                akan terus dilaksanakan setiap tahun dengan konsep yang lebih inovatif dan menarik.
+            </p>
+
+            <div class="border-t border-gray-200 pt-6 mt-8">
+                <p class="text-gray-600 text-sm">
+                    <strong>Narahubung:</strong> OSIM MTsN 1 Makassar<br>
+                    <strong>Email:</strong> osimmtsn1makassar@gmail.com<br>
+                    <strong>Instagram:</strong> @osim.tsansa
+                </p>
+            </div>
+        </article>
+
+        <!-- Photo Gallery Section -->
+        <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div class="flex items-start space-x-3 mb-6">
+                <div class="bg-emerald-100 p-3 rounded-lg">
+                    <i data-lucide="images" class="w-6 h-6 text-emerald-600"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Galeri Foto</h2>
+                    <p class="text-gray-600">Dokumentasi kegiatan LDK 2025</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 image-gallery mb-6">
+                <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 aspect-video flex items-center justify-center">
+                    <div class="text-center text-gray-500 p-4">
+                        <i data-lucide="users-round" class="w-12 h-12 mx-auto mb-2 text-emerald-500"></i>
+                        <p class="text-sm font-medium">Pembukaan LDK 2025</p>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-blue-50 to-cyan-50 aspect-video flex items-center justify-center">
+                    <div class="text-center text-gray-500 p-4">
+                        <i data-lucide="presentation" class="w-12 h-12 mx-auto mb-2 text-blue-500"></i>
+                        <p class="text-sm font-medium">Penyampaian Materi</p>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 to-pink-50 aspect-video flex items-center justify-center">
+                    <div class="text-center text-gray-500 p-4">
+                        <i data-lucide="drama" class="w-12 h-12 mx-auto mb-2 text-purple-500"></i>
+                        <p class="text-sm font-medium">Pentas Seni Budaya</p>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-orange-50 to-amber-50 aspect-video flex items-center justify-center">
+                    <div class="text-center text-gray-500 p-4">
+                        <i data-lucide="mountain" class="w-12 h-12 mx-auto mb-2 text-orange-500"></i>
+                        <p class="text-sm font-medium">Kegiatan Outbound</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="index.html#galeri" class="inline-flex items-center space-x-2 px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200 font-medium">
+                    <span>Lihat Galeri Lengkap</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Related News / Tags -->
+        <div class="bg-gray-50 rounded-xl p-6 mb-8">
+            <h3 class="font-bold text-gray-900 mb-4">Tag Berita</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-4 py-2 bg-white border border-emerald-200 text-emerald-700 rounded-full text-sm font-medium">LDK 2025</span>
+                <span class="px-4 py-2 bg-white border border-emerald-200 text-emerald-700 rounded-full text-sm font-medium">OSIM</span>
+                <span class="px-4 py-2 bg-white border border-emerald-200 text-emerald-700 rounded-full text-sm font-medium">Kepemimpinan</span>
+                <span class="px-4 py-2 bg-white border border-emerald-200 text-emerald-700 rounded-full text-sm font-medium">MTsN 1 Makassar</span>
+                <span class="px-4 py-2 bg-white border border-emerald-200 text-emerald-700 rounded-full text-sm font-medium">Pendidikan Karakter</span>
+            </div>
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="font-bold text-gray-900 mb-4">Bagikan Berita</h3>
+            <div class="flex flex-wrap gap-3">
+                <button class="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    <i data-lucide="facebook" class="w-4 h-4"></i>
+                    <span>Facebook</span>
+                </button>
+                <button class="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                    <i data-lucide="link" class="w-4 h-4"></i>
+                    <span>Salin Link</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+   <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="Logo OSIM.png" class="w-10 h-10 rounded-full" alt="Logo OSIM" loading="lazy">
+                        <div>
+                            <h3 class="text-lg font-bold">OSIM</h3>
+                            <p class="text-sm text-gray-400">MTsN 1 Makassar</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Organisasi Siswa Intra Madrasah yang inspiratif, inovatif,
+                        serta berkarakter disiplin dan berakhlak mulia.
+                    </p>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-4">Media Sosial</h4>
+                        <div class="flex space-x-4">
+                            <button onclick="window.open('https://www.tiktok.com/@osim.tsansa','_blank')"
+                                class="bg-black hover:bg-gray-900 text-white px-4 py-2 rounded-md flex items-center transition-colors duration-200">
+                                <img src="tiktok-logo.png" class="w-5 h-5 mr-2">
+                                Tiktok
+                            </button>
+                            <button onclick="window.open('https://www.instagram.com/osim.tsansa','_blank')"
+                                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-md flex items-center transition-colors duration-200">
+                                <i data-lucide="instagram" class="w-4 h-4 mr-2"></i>
+                                Instagram
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Menu Utama</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#beranda" class="text-gray-400 hover:text-white transition-colors">Beranda</a>
+                        </li>
+                        <li><a href="#tentang" class="text-gray-400 hover:text-white transition-colors">Tentang</a>
+                        </li>
+                        <li><a href="#program" class="text-gray-400 hover:text-white transition-colors">Program
+                                Kerja</a></li>
+                        <li><a href="#anggota" class="text-gray-400 hover:text-white transition-colors">Anggota</a></li>
+                        <li><a href="#berita" class="text-gray-400 hover:text-white transition-colors">Berita</a></li>
+                        <li><a href="#galeri" class="text-gray-400 hover:text-white transition-colors">Galeri</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Kontak</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start space-x-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-400 leading-relaxed">
+                                Jl. A.P. Pettarani No.1A, Mannuruki, Kec. Tamalate, Kota Makassar, Sulawesi Selatan
+                                90221
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0"></i>
+                            <div class="flex flex-col">
+                                <span class="text-gray-400">+62 811-4443-100</span>
+                                <span class="text-gray-400">+62 823-4383-4646</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i>
+                            <span class="text-gray-400">osimmtsn1makassar@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>
+                        © 2025 OSIM MTsN 1 Makassar. Seluruh hak cipta dilindungi.
+                    </p>
+                    <div class="flex items-center mt-4 md:mt-0">
+                        <span>Dibuat dengan</span>
+                        <i data-lucide="heart" class="w-4 h-4 text-red-500 mx-1"></i>
+                        <span>untuk kemajuan madrasah</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('article').forEach((article) => {
+            article.style.opacity = '0';
+            article.style.transform = 'translateY(20px)';
+            article.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(article);
+        });
+    </script>
+</body>
+
+</html>
